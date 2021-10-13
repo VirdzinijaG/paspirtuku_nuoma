@@ -76,7 +76,7 @@ app.put('/scooters/:id', (req, res) => {
 
 // rodo visus paspirtukus
 app.get('/scooters', (req, res) => {
-    con.query('SELECT * FROM scooters', (err, results) => {
+    con.query('SELECT * FROM scooters ORDER BY id DESC', (err, results) => {
         if (err) {
             throw err;
         }
