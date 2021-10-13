@@ -25,6 +25,66 @@ con.connect(err => {
 })
 
 
+// Iraso nauja posta
+
+app.post('/scooters', (req, res) => {
+    console.log(req.body.title)
+    const sql = `
+        INSERT INTO scooters
+        (registration_code, last_use_time, total_ride_kilometres)
+        VALUES (?, ?, ?)
+        `;
+    con.query(sql, [req.body.registration_code, req.body.last_use_time, req.body.total_ride_kilometres], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+// Trina posta
+
+app.delete('/scooters/:id', (req, res) => {
+    const sql = `
+        DELETE FROM scooters
+        WHERE id = ?
+        `;
+    con.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+//Redagavimas
+
+app.put('/scooters/:id', (req, res) => {
+    const sql = `
+        UPDATE scooters
+        SET last_use_time = ?, total_ride_kilometres = ? 
+        WHERE id = ?
+        `;
+    con.query(sql, [req.body.last_use_time, req.body.total_ride_kilometres, req.params.id], (err, result) => {
+        if (err) {
+            throw err;
+        }
+        res.send(result);
+    })
+})
+
+
+// rodo visus paspirtukus
+app.get('/scooters', (req, res) => {
+    con.query('SELECT * FROM scooters', (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.json(results);
+    })
+})
+
+
 
 
 
