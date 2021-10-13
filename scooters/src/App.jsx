@@ -84,6 +84,34 @@ function App() {
     setModalId(0);
   };
 
+  // rusiavimas
+  const sort = by => {
+    const scootersCopy = scooters.slice();
+    if ('total_ride_kilometres' === by) {
+      scootersCopy.sort((a, b) => {
+        if (a.total_ride_kilometres > b.total_ride_kilometres) {
+          return 1
+        }
+        if (a.total_ride_kilometres < b.total_ride_kilometres) {
+          return -1
+        }
+        return 0
+      })
+      setScooters(scootersCopy)
+    }
+    if ("last_use_time" === by) {
+      scootersCopy.sort((a, b) => {
+        if (a.last_use_time > b.last_use_time) {
+          return 1;
+        }
+        if (a.last_use_time < b.last_use_time) {
+          return -1;
+        }
+        return 0;
+      });
+      setScooters(scootersCopy);
+    }
+  }
 
 
 
@@ -94,7 +122,7 @@ function App() {
   return (
     <div className="App">
       <h1>Paspirtukų nuoma</h1>
-      <Top scootersCount={scootersCount} rideCount={rideCount}></Top>
+      <Top sort={sort} scootersCount={scootersCount} rideCount={rideCount}></Top>
       <NewScooter addScooter={addScooter}></NewScooter>
       <Scooters scooters={scooters} deleteScooter={deleteScooter} showModal={showModal}></Scooters>
       <Modal id={modalId} editScooter={editScooter} scooter={getScooter(modalId)} hideModal={hideModal}></Modal>
