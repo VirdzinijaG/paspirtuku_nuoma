@@ -4,12 +4,15 @@ import axios from 'axios';
 import Scooters from './Scooters';
 import NewScooter from './NewScooter';
 import Modal from "./Modal";
+import Top from './Top';
 
 function App() {
 
   const [scooters, setScooters] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [modalId, setModalId] = useState(0);
+  const [scootersCount, setScootersCount] = useState(0);
+  const [rideCount, setRideCount] = useState([]);
 
 
   useEffect(() => {
@@ -17,6 +20,25 @@ function App() {
       setScooters(response.data);
     });
   }, [lastUpdate]);
+
+
+  // Statistika
+  // Visi paspirtukai
+  useEffect(() => {
+    axios.get('http://localhost:3003/scooters/count')
+      .then((response) => {
+        setScootersCount(response.data[0].scootersCount);
+      })
+  }, [lastUpdate])
+
+  // Kilometrai visi
+  useEffect(() => {
+    axios.get('http://localhost:3003/scooters/ride-count')
+      .then((response) => {
+        console.log(response.data);
+        setRideCount(response.data[0].total_ride_kilometres);
+      })
+  }, [lastUpdate])
 
 
   const addScooter = (scooter) => {
@@ -72,6 +94,7 @@ function App() {
   return (
     <div className="App">
       <h1>Paspirtukų nuoma</h1>
+      <Top scootersCount={scootersCount} rideCount={rideCount}></Top>
       <NewScooter addScooter={addScooter}></NewScooter>
       <Scooters scooters={scooters} deleteScooter={deleteScooter} showModal={showModal}></Scooters>
       <Modal id={modalId} editScooter={editScooter} scooter={getScooter(modalId)} hideModal={hideModal}></Modal>

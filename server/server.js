@@ -85,6 +85,34 @@ app.get('/scooters', (req, res) => {
 })
 
 
+// skaiciuoja irasus
+// SELECT COUNT(ProductID) AS NumberOfProducts FROM Products;
+app.get('/scooters/count', (req, res) => {
+    con.query('SELECT COUNT(id) AS scootersCount FROM scooters', (err, results) => {
+        if (err) {
+            throw err;
+        }
+        res.json(results);
+    })
+})
+
+// skaiciuoja kilometrus
+app.get('/scooters/ride-count', (req, res) => {
+    con.query(
+        "SELECT SUM(total_ride_kilometres) AS total_ride_kilometres FROM scooters",
+        (err, results) => {
+            if (err) {
+                throw err;
+            }
+            res.json(results);
+        }
+    );
+});
+
+
+
+
+
 
 
 
