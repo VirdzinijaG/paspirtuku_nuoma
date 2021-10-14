@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import dateFormat from "dateformat";
+import dateformat from "dateformat";
 
 function Modal({ id, scooter, editScooter, hideModal }) {
     const [useTime, setUseTime] = useState('');
@@ -44,7 +44,7 @@ function Modal({ id, scooter, editScooter, hideModal }) {
                             <div className="card-body">
                                 <h5 className="card-title">Redaguoti</h5>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" onChange={(e) => control(e, "last_use_time")} value={dateFormat(useTime, "yyyy-mm-dd")} />
+                                    <input type="text" className="form-control" onChange={(e) => control(e, "last_use_time")} value={dateformat(useTime, "yyyy-mm-dd")} />
                                     <small className="form-text text-muted">
                                         Pakeisti datą
                                     </small>
