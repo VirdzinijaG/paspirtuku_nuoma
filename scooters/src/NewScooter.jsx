@@ -4,6 +4,7 @@ function NewScooter({ addScooter }) {
     const [code, setCode] = useState('');
     const [useTime, setUseTime] = useState('');
     const [ride, setRide] = useState('');
+    const [isBusy, setIsBusy] = useState("");
 
     const control = (e, what) => {
         switch (what) {
@@ -16,6 +17,9 @@ function NewScooter({ addScooter }) {
             case "total_ride_kilometres":
                 setRide(e.target.value);
                 break;
+            case "is_busy":
+                setIsBusy(e.target.value);
+                break;
         }
     };
 
@@ -23,11 +27,13 @@ function NewScooter({ addScooter }) {
         addScooter({
             registration_code: code,
             last_use_time: useTime,
-            total_ride_kilometres: ride
+            total_ride_kilometres: ride,
+            is_busy: isBusy
         });
         setCode("");
         setUseTime("");
         setRide("");
+        setIsBusy("")
     };
 
     return (
@@ -42,6 +48,10 @@ function NewScooter({ addScooter }) {
                     </div>
                     <div class="col-md-5 mb-3">
                         <input type="number" onChange={(e) => control(e, "total_ride_kilometres")} value={ride} class="form-control" id="validationDefault02" placeholder="Pravažiuoti kilometrai" required />
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label>Ar paspirtukas užimtas?</label>
+                        <input type="checkbox" onChange={(e) => control(e, "is_busy")} value={isBusy} class="form-control" id="validationDefault02" />
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" style={{ marginBottom: "20px", textAlign: "center" }} onClick={insert}>Įvesti naują paspirtuką</button>
