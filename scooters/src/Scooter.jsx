@@ -2,7 +2,7 @@ import dateformat from 'dateformat';
 
 function Scooter({ scooter, deleteScooter, showModal }) {
     return (<>
-        <div className="col-lg-12 col-md-6">
+        <div className="col-lg-12 col-md-12 col-sm-10">
             <div className="card m-2">
                 <div style={{boxShadow: "5px 5px #888888"}} className="card-body">
                     <h5 className="card-title">Paspirtuko registracijos kodas:</h5>
