@@ -4,12 +4,17 @@ import dateformat from "dateformat";
 function Modal({ id, scooter, editScooter, hideModal }) {
     const [useTime, setUseTime] = useState('');
     const [ride, setRide] = useState('');
-    const [isBusy, setIsBusy] = useState("");
+    const [checked, setChecked] = useState(false);
+
+    const handleChange = () =>{
+
+        setChecked(!checked);
+
+    };
 
     useEffect(() => {
         setUseTime(scooter.last_use_time);
         setRide(scooter.total_ride_kilometres);
-        setIsBusy(scooter.is_busy)
     }, [scooter]);
 
     const control = (e, what) => {
@@ -20,9 +25,6 @@ function Modal({ id, scooter, editScooter, hideModal }) {
             case "total_ride_kilometres":
                 setRide(e.target.value);
                 break;
-            case "is_busy":
-                setIsBusy(e.target.value);
-                break;
         }
     };
 
@@ -30,12 +32,10 @@ function Modal({ id, scooter, editScooter, hideModal }) {
         editScooter(id, {
             last_use_time: useTime,
             total_ride_kilometres: ride,
-            is_busy: isBusy
         });
         hideModal();
         setUseTime("");
         setRide("");
-        setIsBusy("")
     };
 
     if (id === 0) {
@@ -65,7 +65,8 @@ function Modal({ id, scooter, editScooter, hideModal }) {
                                 <div className="form-group">
                                     <small className="form-text text-muted">
                                         Ar paspirtukas užimtas?
-                                        <input style={{ marginLeft: "5px" }} type="checkbox" onChange={(e) => control(e, "is_busy")} value={isBusy} value="Paneer" />
+                                        <input style={{ marginLeft: "5px" }} type="checkbox" checked={checked} onChange={handleChange} />
+                                        {checked ? "Taip" : "Ne"}
                                     </small>
                                 </div>
                                 <button type="button" className="btn btn-info m-1" onClick={edit}>

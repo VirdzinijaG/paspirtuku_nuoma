@@ -20,6 +20,12 @@ function NewScooter({ addScooter }) {
         }
     };
 
+    for (let i = 0; i < code.length; i++) {
+        if (code[i] >= 9) {
+            alert("Registracijos numeris turi būti iš 8 skaičių")
+        }
+    }
+
     const insert = () => {
         addScooter({
             registration_code: code,
@@ -44,7 +50,7 @@ function NewScooter({ addScooter }) {
                     <div class="col-md-5 mb-3">
                         <input type="number" onChange={(e) => control(e, "total_ride_kilometres")} value={ride} class="form-control" id="validationDefault02" placeholder="Pravažiuoti kilometrai" required />
                     </div>
-                    </div>
+                </div>
                 <button class="btn btn-primary" type="submit" style={{ marginBottom: "20px", textAlign: "center" }} onClick={insert}>Įvesti naują paspirtuką</button>
             </form>
         </>
