@@ -24,7 +24,7 @@ function Modal({ id, scooter, editScooter, hideModal }) {
     const edit = () => {
         editScooter(id, {
             last_use_time: useTime,
-            total_ride_kilometres: ride
+            total_ride_kilometres: ride,
         });
         hideModal();
         setUseTime("");

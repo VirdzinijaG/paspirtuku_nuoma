@@ -83,6 +83,7 @@ function App() {
   const hideModal = (id) => {
     setModalId(0);
   };
+  
 
   // rusiavimas
   const sort = by => {
@@ -121,7 +122,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Paspirtukų nuoma</h1>
+      <h1 style={{ marginTop: "10px", marginBottom: "50px", fontSize: "60px" }}>Paspirtukų nuoma</h1>
       <Top sort={sort} scootersCount={scootersCount} rideCount={rideCount}></Top>
       <NewScooter addScooter={addScooter}></NewScooter>
       <Scooters scooters={scooters} deleteScooter={deleteScooter} showModal={showModal}></Scooters>
