@@ -14,7 +14,7 @@ function Scooter({ scooter, deleteScooter, showModal }) {
                         Paspirtuko nuvažiuoti kilometrai  {(scooter.total_ride_kilometres)}
                     </span>
                     <span className="badge badge-pill badge-secondary m-1 p-2">
-                        Laisvas/užimtas:  {scooter.is_busy}
+                        Laisvas:  {scooter.is_busy}
                     </span>
                     <div className="form-group mt-3">
                         <button type="button" className="btn btn-danger m-1" onClick={() => deleteScooter(scooter.id)}>

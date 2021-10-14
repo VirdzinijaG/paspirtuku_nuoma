@@ -31,10 +31,10 @@ app.post('/scooters', (req, res) => {
     console.log(req.body.title)
     const sql = `
         INSERT INTO scooters
-        (registration_code, last_use_time, total_ride_kilometres)
-        VALUES (?, ?, ?)
+        (registration_code, is_busy, last_use_time, total_ride_kilometres)
+        VALUES (?, ?, ?, ?)
         `;
-    con.query(sql, [req.body.registration_code, req.body.last_use_time, req.body.total_ride_kilometres], (err, result) => {
+    con.query(sql, [req.body.registration_code,  req.body.is_busy, req.body.last_use_time, req.body.total_ride_kilometres], (err, result) => {
         if (err) {
             throw err;
         }
@@ -62,10 +62,10 @@ app.delete('/scooters/:id', (req, res) => {
 app.put('/scooters/:id', (req, res) => {
     const sql = `
         UPDATE scooters
-        SET last_use_time = ?, total_ride_kilometres = ? 
+        SET is_busy = ?, last_use_time = ?, total_ride_kilometres = ? 
         WHERE id = ?
         `;
-    con.query(sql, [req.body.last_use_time, req.body.total_ride_kilometres, req.params.id], (err, result) => {
+    con.query(sql, [req.body.is_busy, req.body.last_use_time, req.body.total_ride_kilometres, req.params.id], (err, result) => {
         if (err) {
             throw err;
         }
