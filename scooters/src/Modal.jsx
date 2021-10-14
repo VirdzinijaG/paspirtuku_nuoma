@@ -55,6 +55,12 @@ function Modal({ id, scooter, editScooter, hideModal }) {
                                         Pakeisti pravažiuotus kilometrus
                                     </small>
                                 </div>
+                                <div className="form-group">
+                                    <small className="form-text text-muted">
+                                        Ar paspirtukas užimtas?
+                                        <input style={{marginLeft: "5px"}} type="checkbox" value="Paneer" />
+                                    </small>
+                                </div>
                                 <button type="button" className="btn btn-info m-1" onClick={edit}>
                                     Atnaujinti
                                 </button>

@@ -33,15 +33,15 @@ function NewScooter({ addScooter }) {
     return (
         <>
             <form>
-                <div class="form-row" style={{ marginLeft: "250px" }}>
+                <div class="form-row" style={{ marginLeft: "60px" }}>
                     <div class="col-md-5 mb-3">
-                        <input type="text" onChange={(e) => control(e, "registration_code")} value={code} class="form-control" id="validationDefault01" placeholder="Paspirtuko registracijos numeris" required />
+                        <input type="number" onChange={(e) => control(e, "registration_code")} value={code} class="form-control" id="validationDefault01" placeholder="Paspirtuko registracijos numeris" required />
                     </div>
                     <div class="col-md-5 mb-3">
-                        <input type="text" onChange={(e) => control(e, "last_use_time")} value={useTime} class="form-control" id="validationDefault02" placeholder="Pakutinis naudojimo laikas" required />
+                        <input type="date" onChange={(e) => control(e, "last_use_time")} value={useTime} class="form-control" id="validationDefault02" placeholder="Pakutinis naudojimo laikas" required />
                     </div>
                     <div class="col-md-5 mb-3">
-                        <input type="text" onChange={(e) => control(e, "total_ride_kilometres")} value={ride} class="form-control" id="validationDefault02" placeholder="Pravažiuoti kilometrai" required />
+                        <input type="number" onChange={(e) => control(e, "total_ride_kilometres")} value={ride} class="form-control" id="validationDefault02" placeholder="Pravažiuoti kilometrai" required />
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit" style={{ marginBottom: "20px", textAlign: "center" }} onClick={insert}>Įvesti naują paspirtuką</button>
