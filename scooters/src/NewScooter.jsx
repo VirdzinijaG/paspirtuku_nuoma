@@ -23,9 +23,10 @@ function NewScooter({ addScooter }) {
     };
 
     for (let i = 0; i < code.length; i++) {
-        if (code.length >= 9) {
+        if (code.length > 8) {
             alert("Registracijos numeris turi būti iš 8 skaičių");
         }
+        break;
     }
 
     const insert = () => {
