@@ -83,7 +83,7 @@ function Modal({ id, scooter, editScooter, hideModal }) {
                                     </small>
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" style={{ textAlign: "center" }} onChange={(e) => control(e, "is_busy")} value={is_busy} />
+                                    <input type="text" className="form-control" style={{ textAlign: "center" }} value={is_busy} />
                                     <small className="form-text text-muted">
                                         Laisvas paspirtukas?
                                     </small>
