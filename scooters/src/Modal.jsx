@@ -71,13 +71,13 @@ function Modal({ id, scooter, editScooter, hideModal }) {
                                     </small>
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" style={{ textAlign: "center" }} onChange={(e) => control(e, "last_use_time")} value={useTime} />
+                                    <input type="text" onKeyPress={(event) => { if (!/[0-9]/.test(event.key)) { event.preventDefault(); } }} className="form-control" style={{ textAlign: "center" }} onChange={(e) => control(e, "last_use_time")} value={useTime} />
                                     <small className="form-text text-muted">
                                         Pakeisti datą
                                     </small>
                                 </div>
                                 <div className="form-group">
-                                    <input type="text" className="form-control" style={{ textAlign: "center" }} onChange={(e) => control(e, "total_ride_kilometres")} value={ride} />
+                                    <input type="text" onKeyPress={(event) => { if (!/[0-9]/.test(event.key)) { event.preventDefault(); } }} className="form-control" style={{ textAlign: "center" }} onChange={(e) => control(e, "total_ride_kilometres")} value={ride} />
                                     <small className="form-text text-muted">
                                         Pakeisti pravažiuotus kilometrus
                                     </small>
