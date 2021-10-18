@@ -29,7 +29,7 @@ function NewScooter({ addScooter }) {
     //     }
     //     break;
     // }
-
+    
 
     const insert = () => {
         addScooter({
