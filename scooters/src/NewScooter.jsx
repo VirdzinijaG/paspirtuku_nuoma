@@ -29,7 +29,7 @@ function NewScooter({ addScooter }) {
     //     }
     //     break;
     // }
-    
+
 
     const insert = () => {
         addScooter({
@@ -44,12 +44,13 @@ function NewScooter({ addScooter }) {
         setIsBusy(1)
     };
 
+
     return (
         <>
             <form>
                 <div className="form-row" style={{ marginLeft: "60px" }}>
                     <div className="col-md-5 mb-3">
-                        <input type="text" maxLength="8" onChange={(e) => control(e, "registration_code")} value={code} className="form-control" id="validationDefault01" placeholder="Paspirtuko registracijos numeris" required />
+                        <input type="text" maxLength="8" onKeyPress={(event) => { if (!/[0-9]/.test(event.key)) { event.preventDefault(); } }} onChange={(e) => control(e, "registration_code")} value={code} className="form-control" id="validationDefault01" placeholder="Paspirtuko registracijos numeris" required />
                     </div>
                     <div className="col-md-5 mb-3">
                         <input type="date" onChange={(e) => control(e, "last_use_time")} value={useTime} className="form-control" id="validationDefault02" placeholder="Pakutinis naudojimo laikas" required />
