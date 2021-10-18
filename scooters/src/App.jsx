@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3003/scooters/ride-count')
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setRideCount(response.data[0].total_ride_kilometres);
       })
   }, [lastUpdate])
@@ -83,7 +83,7 @@ function App() {
   const hideModal = (id) => {
     setModalId(0);
   };
-  
+
 
   // rusiavimas
   const sort = by => {
